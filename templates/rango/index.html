@@ -1,0 +1,26 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{{ category_name }}{% endblock %}
+
+{% block body_block %}
+	<h1>Rango says...</h1>
+	Hello everyone! All the categories I have are listed on the left side. Please select one of the category to see the detail...<strong>{{ boldmessage }}</strong><br />
+	<div>
+		<h3>The current top 5 most viewed pages in all categories are:</h3>
+	 	{% if pages %}
+	       	<ul>
+	        	{% for page in pages %}
+	            	<li><a href="{{ page.url }}">{{ page.title }}</a></li>
+	           	{% endfor %}
+	        </ul>
+		{% else %}
+	    	<strong>No pages currently in category.</strong>
+	    {% endif %}
+	</div>
+{% endblock %}
+
+{% block footer %}
+<p> visits: {{ visits }}</p>
+{% endblock %}
